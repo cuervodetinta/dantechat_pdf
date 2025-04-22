@@ -12,7 +12,7 @@ import platform
 # App title and presentation
 st.title('RAG - Chatea con un PDF!')
 st.write("Versión de Python:", platform.python_version())
-st.write("API KEY: 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")
+st.write("Mediante esta app podrás chatear con un bot que se leyó un PDF que le proporciones.")
 
 # Load and display image
 try:
