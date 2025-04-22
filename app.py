@@ -63,6 +63,10 @@ if pdf is not None and ke:
         # User question interface
         st.subheader("Escribe qué quieres saber sobre el documento")
         user_question = st.text_area(" ", placeholder="Escribe tu pregunta aquí...")
+
+
+        image = Image.open('otrooo.png')
+
         
         # Process question when submitted
         if user_question:
@@ -92,7 +96,3 @@ elif pdf is not None and not ke:
 else:
     st.info("Por favor carga un archivo PDF para comenzar")
 
-try:
-    image = Image.open('otrooo.png')
-except Exception as e:
-    st.warning(f"No se pudo cargar la imagen: {e}")
