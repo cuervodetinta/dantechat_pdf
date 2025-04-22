@@ -17,7 +17,7 @@ st.write("Mediante esta app podrás chatear con un bot que se leyó un PDF que l
 # Load and display image
 try:
     image = Image.open('robotcito.png')
-    st.image(image, width=350)
+    st.image(image, width=500)
 except Exception as e:
     st.warning(f"No se pudo cargar la imagen: {e}")
 
@@ -91,3 +91,8 @@ elif pdf is not None and not ke:
     st.warning("Por favor ingresa tu clave de API de OpenAI para continuar")
 else:
     st.info("Por favor carga un archivo PDF para comenzar")
+
+try:
+    image = Image.open('otrooo.png')
+except Exception as e:
+    st.warning(f"No se pudo cargar la imagen: {e}")
