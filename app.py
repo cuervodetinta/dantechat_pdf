@@ -64,9 +64,6 @@ if pdf is not None and ke:
         st.subheader("Escribe qué quieres saber sobre el documento")
         user_question = st.text_area(" ", placeholder="Escribe tu pregunta aquí...")
 
-
-        image = Image.open('otrooo.png')
-
         
         # Process question when submitted
         if user_question:
