@@ -9,9 +9,10 @@ from langchain.llms import OpenAI
 from langchain.chains.question_answering import load_qa_chain
 import platform
 
+# Personalización de estilo en la app
 st.markdown("""
     <style>
-    .stApp {
+    body {
         background-color: #FFF8DC !important;
         color: black !important;
     }
@@ -40,26 +41,32 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+# Título de la app
 st.title('RAG - Chatea con un PDF!')
 st.write("Versión de Python:", platform.python_version())
 st.write("Mediante esta app podrás chatear con un bot que se leyó un PDF que le proporciones.")
 
+# Cargar imagen
 try:
     image = Image.open('robotcito.png')
     st.image(image, width=500)
 except Exception as e:
-    st.warning("No se pudo cargar la imagen: {e}")
+    st.warning(f"No se pudo cargar la imagen: {e}")
 
+# Input para clave de API
 ke = st.text_input('Ingresa tu Clave de OpenAI', type="password")
 if ke:
     os.environ['OPENAI_API_KEY'] = ke
 else:
     st.warning("Por favor ingresa tu clave de API de OpenAI para continuar")
 
+# Cargar PDF
 pdf = st.file_uploader("Carga el archivo PDF", type="pdf")
 
+# Procesar el PDF
 if pdf is not None and ke:
     try:
+        # Leer el PDF
         pdf_reader = PdfReader(pdf)
         text = ""
         for page in pdf_reader.pages:
@@ -67,6 +74,7 @@ if pdf is not None and ke:
         
         st.info(f"Texto extraído: {len(text)} caracteres")
         
+        # Dividir el texto
         text_splitter = CharacterTextSplitter(
             separator="\n",
             chunk_size=500,
@@ -76,9 +84,11 @@ if pdf is not None and ke:
         chunks = text_splitter.split_text(text)
         st.success(f"Documento dividido en {len(chunks)} fragmentos")
         
+        # Crear embeddings y base de conocimiento
         embeddings = OpenAIEmbeddings()
         knowledge_base = FAISS.from_texts(chunks, embeddings)
         
+        # Pregunta del usuario
         st.subheader("Escribe qué quieres saber sobre el documento")
         user_question = st.text_area(" ", placeholder="Escribe tu pregunta aquí...")
 
