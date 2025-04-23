@@ -28,8 +28,11 @@ st.markdown("""
         color: black;
     }
     .stWarning, .stError, .stInfo {
-        color: #1976D2;
-        border-color: #1976D2;
+        color: black;
+        border-color: black;
+    }
+    .stTitle, .stSubheader, .stMarkdown, .stText {
+        color: black;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -93,3 +96,4 @@ elif pdf is not None and not ke:
     st.warning("Por favor ingresa tu clave de API de OpenAI para continuar")
 else:
     st.info("Por favor carga un archivo PDF para comenzar")
+
