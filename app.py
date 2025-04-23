@@ -27,12 +27,13 @@ st.markdown("""
         background-color: #FFF9C4;
         color: black;
     }
-    .stWarning, .stError, .stInfo {
-        color: black;
-        border-color: black;
-    }
     .stTitle, .stSubheader, .stMarkdown, .stText {
         color: black;
+    }
+    .stWarning, .stError, .stInfo {
+        background-color: #d3e7f9;
+        color: black;
+        border-color: #75a7d3;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -52,7 +53,7 @@ ke = st.text_input('Ingresa tu Clave de OpenAI', type="password", placeholder="C
 if ke:
     os.environ['OPENAI_API_KEY'] = ke
 else:
-    st.warning("Por favor ingresa tu clave de API de OpenAI para continuar")
+    st.markdown('<p style="color: #75a7d3;">Por favor ingresa tu clave de API de OpenAI para continuar</p>', unsafe_allow_html=True)
 
 pdf = st.file_uploader("Carga el archivo PDF", type="pdf")
 
@@ -93,7 +94,6 @@ if pdf is not None and ke:
         import traceback
         st.error(traceback.format_exc())
 elif pdf is not None and not ke:
-    st.warning("Por favor ingresa tu clave de API de OpenAI para continuar")
+    st.markdown('<p style="color: #75a7d3;">Por favor ingresa tu clave de API de OpenAI para continuar</p>', unsafe_allow_html=True)
 else:
     st.info("Por favor carga un archivo PDF para comenzar")
-
