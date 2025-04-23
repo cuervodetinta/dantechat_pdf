@@ -20,16 +20,12 @@ st.markdown("""
         color: black !important;
     }
 
-    .stTextInput, .stTextArea, .stNumberInput, .stSlider, .stFileUploader {
+    .stTextInput, .stTextArea, .stNumberInput, .stSlider, .stFileUploader, .stMarkdown, .stButton {
         background-color: #FFFFFF !important;
         color: black !important;
     }
 
-    .stButton, .stDownloadButton, .stRadio, .stSelectbox, .stCheckbox {
-        color: black !important;
-    }
-
-    .stTitle {
+    .stTitle, .stSubheader, .stHeader, .stText, .stTextInput label, .stFileUploader label, .stTextArea label {
         color: black !important;
     }
 
@@ -38,16 +34,8 @@ st.markdown("""
         color: black !important;
     }
 
-    .stTextInput label, .stTextArea label, .stFileUploader label {
-        color: black !important;
-    }
-
     .stSidebar, .stSidebar .sidebar-content {
         display: none !important;
-    }
-
-    .stFileUploader label {
-        color: black !important;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -60,7 +48,7 @@ try:
     image = Image.open('robotcito.png')
     st.image(image, width=500)
 except Exception as e:
-    st.warning(f"No se pudo cargar la imagen: {e}")
+    st.warning("No se pudo cargar la imagen: {e}")
 
 ke = st.text_input('Ingresa tu Clave de OpenAI', type="password")
 if ke:
