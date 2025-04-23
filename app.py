@@ -14,7 +14,7 @@ st.markdown("""
     .stApp {
         background-color: #FFF9C4;
     }
-    .stTextInput>div>div>input, .stTextArea>div>div>textarea, .stTextInput>div>div>label, .stMarkdown, .stSubheader, .stTitle, .stText {
+    .stTextInput>div>div>input, .stTextArea>div>div>textarea, .stTextInput>div>div>label, .stMarkdown, .stSubheader, .stText {
         color: black !important;
     }
     .stButton>button {
@@ -29,6 +29,9 @@ st.markdown("""
         background-color: #d3e7f9;
         color: black;
         border-color: #75a7d3;
+    }
+    .stTitle {
+        color: black !important;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -91,4 +94,4 @@ if pdf is not None and ke:
 elif pdf is not None and not ke:
     st.markdown('<div style="background-color: #d3e7f9; color: black; border-color: #75a7d3; padding: 10px; border-radius: 5px;">Por favor ingresa tu clave de API de OpenAI para continuar</div>', unsafe_allow_html=True)
 else:
-    st.info("Por favor carga un archivo PDF para comenzar")
+    st.markdown('<div style="background-color: #d3e7f9; color: black; border-color: #75a7d3; padding: 10px; border-radius: 5px;">Por favor carga un archivo PDF para comenzar</div>', unsafe_allow_html=True)
