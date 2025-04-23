@@ -12,26 +12,34 @@ import platform
 st.markdown("""
     <style>
     .stApp {
-        background-color: #FFF9C4;
-    }
-    .stTextInput>div>div>input, .stTextArea>div>div>textarea, .stTextInput>div>div>label, .stMarkdown, .stSubheader, .stText {
+        background-color: #FFF8DC !important;
         color: black !important;
     }
-    .stButton>button {
-        background-color: #FFF9C4;
-        color: black;
+
+    h1, h2, h3, h4, h5, h6 {
+        color: black !important;
     }
-    .stFileUploader {
-        background-color: #FFF9C4;
-        color: black;
+
+    .stTextInput, .stTextArea, .stNumberInput, .stSlider, .stFileUploader {
+        background-color: #FFFFFF !important;
+        color: black !important;
     }
-    .stWarning, .stError, .stInfo {
-        background-color: #d3e7f9;
-        color: black;
-        border-color: #75a7d3;
+
+    .stButton, .stDownloadButton, .stRadio, .stSelectbox, .stCheckbox {
+        color: black !important;
     }
+
     .stTitle {
         color: black !important;
+    }
+
+    .stWarning, .stError, .stInfo {
+        background-color: #cce5ff !important;
+        color: black !important;
+    }
+
+    .stSidebar, .stSidebar .sidebar-content {
+        background-color: transparent !important;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -46,12 +54,14 @@ try:
 except Exception as e:
     st.warning(f"No se pudo cargar la imagen: {e}")
 
-ke = st.text_input('Ingresa tu Clave de OpenAI', type="password", placeholder="Clave de OpenAI")
+with st.sidebar:
+    st.subheader("Este Agente te ayudará a realizar análisis sobre el PDF cargado")
 
+ke = st.text_input('Ingresa tu Clave de OpenAI', type="password")
 if ke:
     os.environ['OPENAI_API_KEY'] = ke
 else:
-    st.markdown('<div style="background-color: #d3e7f9; color: black; border-color: #75a7d3; padding: 10px; border-radius: 5px;">Por favor ingresa tu clave de API de OpenAI para continuar</div>', unsafe_allow_html=True)
+    st.warning("Por favor ingresa tu clave de API de OpenAI para continuar")
 
 pdf = st.file_uploader("Carga el archivo PDF", type="pdf")
 
@@ -92,6 +102,6 @@ if pdf is not None and ke:
         import traceback
         st.error(traceback.format_exc())
 elif pdf is not None and not ke:
-    st.markdown('<div style="background-color: #d3e7f9; color: black; border-color: #75a7d3; padding: 10px; border-radius: 5px;">Por favor ingresa tu clave de API de OpenAI para continuar</div>', unsafe_allow_html=True)
+    st.warning("Por favor ingresa tu clave de API de OpenAI para continuar")
 else:
-    st.markdown('<div style="background-color: #d3e7f9; color: black; border-color: #75a7d3; padding: 10px; border-radius: 5px;">Por favor carga un archivo PDF para comenzar</div>', unsafe_allow_html=True)
+    st.info("Por favor carga un archivo PDF para comenzar")
