@@ -38,8 +38,12 @@ st.markdown("""
         color: black !important;
     }
 
+    .stTextInput label, .stTextArea label, .stFileUploader label {
+        color: black !important;
+    }
+
     .stSidebar, .stSidebar .sidebar-content {
-        background-color: transparent !important;
+        display: none !important;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -53,9 +57,6 @@ try:
     st.image(image, width=500)
 except Exception as e:
     st.warning(f"No se pudo cargar la imagen: {e}")
-
-with st.sidebar:
-    st.subheader("Este Agente te ayudará a realizar análisis sobre el PDF cargado")
 
 ke = st.text_input('Ingresa tu Clave de OpenAI', type="password")
 if ke:
