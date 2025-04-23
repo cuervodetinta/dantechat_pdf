@@ -45,6 +45,10 @@ st.markdown("""
     .stSidebar, .stSidebar .sidebar-content {
         display: none !important;
     }
+
+    .stFileUploader label {
+        color: black !important;
+    }
     </style>
 """, unsafe_allow_html=True)
 
