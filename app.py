@@ -13,11 +13,9 @@ st.markdown("""
     <style>
     .stApp {
         background-color: #FFF9C4;
-        color: black;
     }
-    .stTextInput>div>div>input, .stTextArea>div>div>textarea {
-        background-color: #FFF9C4;
-        color: black;
+    .stTextInput>div>div>input, .stTextArea>div>div>textarea, .stTextInput>div>div>label, .stMarkdown, .stSubheader, .stTitle, .stText {
+        color: black !important;
     }
     .stButton>button {
         background-color: #FFF9C4;
@@ -27,19 +25,10 @@ st.markdown("""
         background-color: #FFF9C4;
         color: black;
     }
-    .stTitle, .stSubheader, .stMarkdown, .stText {
-        color: black;
-    }
-    .stTextInput>div>div>input, .stTextArea>div>div>textarea, .stTextInput>div>div>label {
-        color: black !important;
-    }
     .stWarning, .stError, .stInfo {
         background-color: #d3e7f9;
         color: black;
         border-color: #75a7d3;
-    }
-    .stTitle {
-        color: black !important;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -59,7 +48,7 @@ ke = st.text_input('Ingresa tu Clave de OpenAI', type="password", placeholder="C
 if ke:
     os.environ['OPENAI_API_KEY'] = ke
 else:
-    st.markdown('<p style="color: #75a7d3;">Por favor ingresa tu clave de API de OpenAI para continuar</p>', unsafe_allow_html=True)
+    st.markdown('<div style="background-color: #d3e7f9; color: black; border-color: #75a7d3; padding: 10px; border-radius: 5px;">Por favor ingresa tu clave de API de OpenAI para continuar</div>', unsafe_allow_html=True)
 
 pdf = st.file_uploader("Carga el archivo PDF", type="pdf")
 
@@ -100,6 +89,6 @@ if pdf is not None and ke:
         import traceback
         st.error(traceback.format_exc())
 elif pdf is not None and not ke:
-    st.markdown('<p style="color: #75a7d3;">Por favor ingresa tu clave de API de OpenAI para continuar</p>', unsafe_allow_html=True)
+    st.markdown('<div style="background-color: #d3e7f9; color: black; border-color: #75a7d3; padding: 10px; border-radius: 5px;">Por favor ingresa tu clave de API de OpenAI para continuar</div>', unsafe_allow_html=True)
 else:
     st.info("Por favor carga un archivo PDF para comenzar")
