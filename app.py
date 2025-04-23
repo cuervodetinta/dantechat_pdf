@@ -30,10 +30,16 @@ st.markdown("""
     .stTitle, .stSubheader, .stMarkdown, .stText {
         color: black;
     }
+    .stTextInput>div>div>input, .stTextArea>div>div>textarea, .stTextInput>div>div>label {
+        color: black !important;
+    }
     .stWarning, .stError, .stInfo {
         background-color: #d3e7f9;
         color: black;
         border-color: #75a7d3;
+    }
+    .stTitle {
+        color: black !important;
     }
     </style>
 """, unsafe_allow_html=True)
